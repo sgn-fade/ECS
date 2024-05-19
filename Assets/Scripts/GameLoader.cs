@@ -19,6 +19,7 @@ public class GameLoader : MonoBehaviour
         systems.Add(new PlayerInputSystem());
         systems.Add(new PickSystem());
         systems.Add(new RotationSystem());
+        systems.Add(new ChasingSystem());
 
         systems.Init();
     }

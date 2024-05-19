@@ -14,8 +14,8 @@ namespace Systems
         {
             foreach (int entity in _filter)
             {
-                ref var inputComponent = ref _inputs.Get (entity);
                 ref var moveComponent = ref _movables.Get (entity);
+                ref var inputComponent = ref _inputs.Get (entity);
                 moveComponent.Rigidbody.velocity = inputComponent.Direction * moveComponent.MoveSpeed;
             }
         }

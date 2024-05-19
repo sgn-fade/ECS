@@ -27,7 +27,7 @@ namespace Systems
         public void Init(IEcsSystems systems)
         {
             EcsWorld world = systems.GetWorld();
-            _filter = world.Filter<InputComponent>().End();
+            _filter = world.Filter<MoveComponent>().End();
             _moves = world.GetPool<MoveComponent>();
         }
     }
