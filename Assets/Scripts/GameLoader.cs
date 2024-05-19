@@ -14,6 +14,8 @@ public class GameLoader : MonoBehaviour
         systems = new EcsSystems(_world);
 
         systems.Add(new GameInitSystem());
+        systems.Add(new MoveSystem());
+        systems.Add(new PlayerInputSystem());
 
         systems.Init();
     }

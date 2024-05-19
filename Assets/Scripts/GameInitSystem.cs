@@ -10,8 +10,8 @@ public class GameInitSystem : IEcsInitSystem
         var player = _world.NewEntity();
         var inputPool = _world.GetPool<InputComponent>();
         var movePool = _world.GetPool<MoveComponent>();
-        ref var inputComponent = ref inputPool.Add(player);
         ref var moveComponent = ref movePool.Add(player);
+        inputPool.Add(player);
 
 
         PlayerInitData playerData = DataRefs.PlayerInitData;

@@ -1,29 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using Leopotam.EcsLite;
 using UnityEngine;
 
-public class PlayerInputSystem : IEcsInitSystem, IEcsRunSystem
+public class MoveSystem : IEcsRunSystem, IEcsInitSystem
 {
     EcsFilter _filter;
     private EcsPool<InputComponent> _inputs;
+    private EcsPool<MoveComponent> _movables;
+
     public void Run(IEcsSystems systems)
     {
-        float x = Input.GetAxisRaw("Horizontal");
-        float y = Input.GetAxisRaw("Vertical");
-
-        
         foreach (int entity in _filter)
         {
             ref var inputComponent = ref _inputs.Get (entity);
-            inputComponent.Direction = new Vector2(x, y);
+            ref var moveComponent = ref _movables.Get (entity);
+
+            moveComponent.Transform.position += (Vector3)inputComponent.Direction * Time.deltaTime * moveComponent.MoveSpeed;
+
         }
     }
 
     public void Init(IEcsSystems systems)
     {
         EcsWorld world = systems.GetWorld();
-        _filter = world.Filter<InputComponent>().End();
+        _filter = world.Filter<InputComponent>().Inc<MoveComponent>().End();
         _inputs = world.GetPool<InputComponent>();
+        _movables = world.GetPool<MoveComponent>();
     }
 }
