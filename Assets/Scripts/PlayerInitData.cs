@@ -1,11 +1,8 @@
 using UnityEngine;
-
-namespace DefaultNamespace
+[CreateAssetMenu]
+public class PlayerInitData : ScriptableObject
 {
-    public class PlayerInitData : ScriptableObject
-    {
-        public GameObject PlayerPrefab = PrefabREfs.playerPrefab;
-        public float DefaultSpeed = 2f;
+    public GameObject PlayerPrefab;
+    public float Speed = 2f;
 
-    }
 }

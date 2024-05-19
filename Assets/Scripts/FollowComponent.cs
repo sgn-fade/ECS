@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FollowComponent
+public struct FollowComponent
 {
     public Transform Target;
 }
