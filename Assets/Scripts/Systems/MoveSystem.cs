@@ -16,7 +16,6 @@ namespace Systems
             {
                 ref var inputComponent = ref _inputs.Get (entity);
                 ref var moveComponent = ref _movables.Get (entity);
-
                 moveComponent.Transform.position += (Vector3)inputComponent.Direction * Time.deltaTime * moveComponent.MoveSpeed;
 
             }

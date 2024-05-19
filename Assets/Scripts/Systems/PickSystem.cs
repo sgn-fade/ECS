@@ -14,8 +14,12 @@ namespace Systems
             foreach (int entity in _filter)
             {
                 ref var pickComponent = ref _picks.Get (entity);
-                Collider[] hits = Physics.OverlapSphere(pickComponent.Transform.position, pickComponent.SphereRadius);
-                if(hits != null) _picks.Del(entity);
+                Collider2D body = Physics2D.OverlapCircle(pickComponent.Transform.position, pickComponent.SphereRadius);
+                if (body != null)
+                {
+                    Object.Destroy(pickComponent.GameObject);
+                    _picks.Del(entity);
+                }
             }
         }
 

@@ -22,6 +22,7 @@ namespace Systems
             moveComponent.MoveSpeed = playerData.speed;
             moveComponent.Transform = playerPrefab.transform;
             SpawnBerries();
+            SpawnBlocks();
         }
 
         private void SpawnBerries()
@@ -32,8 +33,25 @@ namespace Systems
             for (int i = 0; i < 5; i++)
             {
                 var berry = _world.NewEntity();
-                var berryPrefab = Object.Instantiate(berryData.berryPrefab, Random.insideUnitCircle, Quaternion.identity);
+                var berryPrefab = Object.Instantiate(berryData.berryPrefab, Random.insideUnitCircle * 2, Quaternion.identity);
                 ref var pickComponent = ref pickPool.Add(berry);
+                pickComponent.Transform = berryPrefab.transform;
+                pickComponent.GameObject = berryPrefab.gameObject;
+                pickComponent.SphereRadius = 0.0001f;
+            }
+        }
+
+        private void SpawnBlocks()
+        {
+            float width = 6;
+            float hight = 3;
+            float step = 1f;
+            for (float x = -width/2; x < width/2; x += step)
+            {
+                for (float y = -hight/2; y < hight/2; y += step)
+                {
+                    Object.Instantiate(DataRefs.Block, new Vector2(x, y), Quaternion.identity);
+                }
             }
         }
     }
