@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63da5ebdca644e36acc5b0e63b837dbf, type: 3}
-  m_Name: PlayerInitData
+  m_Script: {fileID: 11500000, guid: 0e0df97c533140c6a5f3ea8a489b12c3, type: 3}
+  m_Name: BerryInitData
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 3229145696588109121, guid: 782fe31bd7e647b41a5f66f978d63730, type: 3}
-  speed: 2
+  pickSphere: 0.2
+  berryPrefab: {fileID: 5795686093412354647, guid: 876ff9f2f1a9bf747873fbb29553fa05, type: 3}

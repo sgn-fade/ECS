@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.Serialization;
+
 [CreateAssetMenu]
 public class PlayerInitData : ScriptableObject
 {
-    public GameObject PlayerPrefab;
-    public float Speed = 2f;
+    public GameObject playerPrefab;
+    public float speed = 2f;
 
 }

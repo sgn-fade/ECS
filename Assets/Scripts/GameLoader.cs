@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Leopotam.EcsLite;
+using Systems;
 using UnityEngine;
 
 public class GameLoader : MonoBehaviour
@@ -16,6 +17,7 @@ public class GameLoader : MonoBehaviour
         systems.Add(new GameInitSystem());
         systems.Add(new MoveSystem());
         systems.Add(new PlayerInputSystem());
+        systems.Add(new PickSystem());
 
         systems.Init();
     }
