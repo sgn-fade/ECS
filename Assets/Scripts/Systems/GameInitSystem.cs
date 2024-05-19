@@ -22,7 +22,6 @@ namespace Systems
             moveComponent.MoveSpeed = playerData.speed;
             moveComponent.Transform = playerPrefab.transform;
             SpawnBerries();
-            SpawnBlocks();
         }
 
         private void SpawnBerries()
@@ -41,18 +40,5 @@ namespace Systems
             }
         }
 
-        private void SpawnBlocks()
-        {
-            float width = 6;
-            float hight = 3;
-            float step = 1f;
-            for (float x = -width/2; x < width/2; x += step)
-            {
-                for (float y = -hight/2; y < hight/2; y += step)
-                {
-                    Object.Instantiate(DataRefs.Block, new Vector2(x, y), Quaternion.identity);
-                }
-            }
-        }
     }
 }
