@@ -8,30 +8,30 @@ using UnityEngine;
 public class GameLoader : MonoBehaviour
 {
     EcsWorld _world;
-    private EcsSystems systems;
+    private EcsSystems _systems;
+
     private void Start()
     {
         _world = new EcsWorld();
-        systems = new EcsSystems(_world);
+        _systems = new EcsSystems(_world);
 
-        systems.Add(new GameInitSystem());
-        systems.Add(new MoveSystem());
-        systems.Add(new PlayerInputSystem());
-        systems.Add(new PickSystem());
-        systems.Add(new RotationSystem());
-        systems.Add(new ChasingSystem());
-
-        systems.Init();
+        _systems.Add(new GameInitSystem())
+            .Add(new MoveSystem())
+            .Add(new PlayerInputSystem())
+            .Add(new PickSystem())
+            .Add(new RotationSystem())
+            .Add(new ChasingSystem())
+            .Init();
     }
 
     private void Update()
     {
-        systems.Run();
+        _systems.Run();
     }
 
     private void OnDestroy()
     {
-        systems.Destroy();
+        _systems.Destroy();
 
         _world.Destroy();
     }
