@@ -1,5 +1,6 @@
 using Components;
 using Leopotam.EcsLite;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Systems
@@ -10,20 +11,23 @@ namespace Systems
         public void Init(IEcsSystems systems)
         {
             _world = systems.GetWorld();
+            CreatePlayer();
+            SpawnBerries();
+        }
+
+        private void CreatePlayer()
+        {
             var player = _world.NewEntity();
             var inputPool = _world.GetPool<InputComponent>();
             var movePool = _world.GetPool<MoveComponent>();
             ref var moveComponent = ref movePool.Add(player);
             inputPool.Add(player);
-
-
             PlayerInitData playerData = DataRefs.PlayerInitData;
             var playerPrefab = Object.Instantiate(playerData.playerPrefab, Vector3.zero, Quaternion.identity);
             moveComponent.MoveSpeed = playerData.speed;
             moveComponent.Transform = playerPrefab.transform;
-            SpawnBerries();
+            moveComponent.Rigidbody = playerPrefab.GetComponent<Rigidbody2D>();
         }
-
         private void SpawnBerries()
         {
             var pickPool = _world.GetPool<PickComponent>();
